@@ -1,0 +1,23 @@
+# Dependencias y builds
+node_modules
+dist
+dist-ssr
+coverage
+*.local
+.vite
+
+# Pruebas
+playwright-report
+test-results
+
+# Editor / SO
+.DS_Store
+.idea
+.vscode/*
+!.vscode/extensions.json
+*.log
+
+# Variables de entorno (claves de API del proxy opcional)
+.env
+.env.*
+!.env.example

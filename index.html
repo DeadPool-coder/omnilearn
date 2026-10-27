@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="Omnilearn: aprende cualquier tema con rutas adaptativas, recuperación activa y repaso espaciado."
+    />
+    <meta name="theme-color" content="#0b0d10" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <title>Omnilearn</title>
+    <script>
+      // Aplica el tema guardado antes del primer pintado (evita el destello claro/oscuro).
+      (function () {
+        try {
+          var raw = localStorage.getItem('omnilearn-settings');
+          var theme = raw ? (JSON.parse(raw).state || {}).theme : null;
+          var resolved =
+            theme === 'light' || theme === 'dark'
+              ? theme
+              : theme === 'system'
+                ? window.matchMedia('(prefers-color-scheme: light)').matches
+                  ? 'light'
+                  : 'dark'
+                : 'dark';
+          document.documentElement.setAttribute('data-theme', resolved);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
